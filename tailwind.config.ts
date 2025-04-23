@@ -32,6 +32,9 @@ const config: Config = {
           "900": "#FFFFFF",
         },
       },
+      link: {
+        "100": "#1DA1F2",
+      },
       borderRadius: {
         "2": "8px",
         "1.5": "6px",
