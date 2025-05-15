@@ -1,14 +1,16 @@
 "use server";
 
 import { FilterQuery } from "mongoose";
+
+import { Question, Tag } from "@/database";
+
 import action from "../handlers/action";
 import handleError from "../handlers/error";
+import dbConnect from "../mongoose";
 import {
   GetTagQuestionsSchema,
   PaginatedSearchParamsSchema,
 } from "../validations";
-import { Question, Tag } from "@/database";
-import dbConnect from "../mongoose";
 
 export const getTags = async (
   params: PaginatedSearchParams

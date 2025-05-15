@@ -1,9 +1,9 @@
+import { AnswerFilters } from "@/constants/filters";
 import { EMPTY_ANSWERS } from "@/constants/states";
 
 import AnswerCard from "../cards/AnswerCard";
 import DataRenderer from "../DataRenderer";
 import CommonFilter from "../filters/CommonFilter";
-import { AnswerFilters } from "@/constants/filters";
 import Pagination from "../Pagination";
 
 interface Props extends ActionResponse<Answer[]> {
