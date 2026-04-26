@@ -17,7 +17,7 @@ export async function POST(req: Request) {
     }
 
     const { text } = await generateText({
-      model: google("gemini-2.0-flash-exp"),
+      model: google("gemini-flash-latest"),
       prompt: `Generate a markdown-formatted response to the following question: "${question}".  
       
       Consider the provided context:  
