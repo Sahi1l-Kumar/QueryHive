@@ -1,3 +1,5 @@
+import nextCoreWebVitals from "eslint-config-next/core-web-vitals";
+import nextTypescript from "eslint-config-next/typescript";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -12,59 +14,48 @@ const compat = new FlatCompat({
   allConfig: js.configs.all,
 });
 
-const config = [
-  {
-    ignores: ["components/ui/**/*"],
-  },
-  ...compat.extends(
-    "next/core-web-vitals",
-    "next/typescript",
-    "standard",
-    // "plugin:tailwindcss/recommended",
-    "prettier"
-  ),
-  {
-    rules: {
-      "import/order": [
-        "error",
-        {
-          groups: [
-            "builtin",
-            "external",
-            "internal",
-            ["parent", "sibling"],
-            "index",
-            "object",
-          ],
+const config = [{
+  ignores: ["components/ui/**/*"],
+}, ...nextCoreWebVitals, ...nextTypescript, ...compat.extends("standard"), ...compat.extends("prettier"), {
+  rules: {
+    "import/order": [
+      "error",
+      {
+        groups: [
+          "builtin",
+          "external",
+          "internal",
+          ["parent", "sibling"],
+          "index",
+          "object",
+        ],
 
-          "newlines-between": "always",
+        "newlines-between": "always",
 
-          pathGroups: [
-            {
-              pattern: "@app/**",
-              group: "external",
-              position: "after",
-            },
-          ],
-
-          pathGroupsExcludedImportTypes: ["builtin"],
-
-          alphabetize: {
-            order: "asc",
-            caseInsensitive: true,
+        pathGroups: [
+          {
+            pattern: "@app/**",
+            group: "external",
+            position: "after",
           },
-        },
-      ],
-      "comma-dangle": "off",
-    },
-  },
-  {
-    files: ["**/*.ts", "**/*.tsx"],
+        ],
 
-    rules: {
-      "no-undef": "off",
-    },
+        pathGroupsExcludedImportTypes: ["builtin"],
+
+        alphabetize: {
+          order: "asc",
+          caseInsensitive: true,
+        },
+      },
+    ],
+    "comma-dangle": "off",
   },
-];
+}, {
+  files: ["**/*.ts", "**/*.tsx"],
+
+  rules: {
+    "no-undef": "off",
+  },
+}];
 
 export default config;
